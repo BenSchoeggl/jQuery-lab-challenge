@@ -22,12 +22,28 @@ $(function() {
 	 		-- Input values are strings, remember to parse it!
 			-- Regex for checking digit input is '^\\d+$'
 			-- Look up how setInterval() works, you will need it.
-	*/		
+	*/
+    $('#countdownButton').click(function(button) {
+        var seconds = $('time').value;
+        var regEx = new RegExp('^\d+$');
+        if (regEx.test(seconds)) {
+            console.log('button');
+            seconds = parseInt(seconds);
+            console.log(seconds);
+            countDown(seconds);
+        }
+    });
 });
 
-function countDown() {
+function countDown(seconds) {
 	// Hint: if time < 0, stop the countdown, otherwise refresh the timer display & call createConfetti().
 	// Hint: to stop countdown, look up clearInterval() function.
+    console.log('blah');
+    var now = Date.now();
+    window.setInterval(function() {
+        var timeLeft = Math.floor((Date.now() - seconds) / 1000);
+        $('#displayedTimer').text(timeLeft + ' s');
+    })
 }
 
 function createConfetti() {
