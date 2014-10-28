@@ -25,7 +25,8 @@ $(function() {
 // Hint: apply default styling to all buttons, and then apply only 'active' (btn-danger)
 // styling to the selected button.
 function setButtonStyle(selectedButton, buttons) {
-
+    buttons.attr('class', 'btn btn-primary');
+    selectedButton.attr('class', 'btn btn-danger');
 }
 
 /*
@@ -37,6 +38,14 @@ function setButtonStyle(selectedButton, buttons) {
 */
 function moveImageIntoFrame(button) {
 	console.log('here');
+    var key = button.data('imageKey');
+    var img = $('#frame img');
+    console.log(img);
+    console.log(key['src']);
+    img.fadeOut(100, function() {
+        img.attr('src', key['src']);
+        img.fadeIn(100);
+    });
 }
 
 
